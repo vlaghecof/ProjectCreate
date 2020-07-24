@@ -1,8 +1,9 @@
 import sys
 import os
 
+print("Folder creat local")
 foldername = str(sys.argv[1])
-path = os.environ.get('mp')
+path ='C:\\Users\\Vlad\\Desktop\\gitprojects'  #os.environ.get('C:\Users\Vlad\Desktop\gitprojects')
 _dir = path + '/' + foldername
 
 try:

@@ -2,9 +2,11 @@ import sys
 import os
 from github import Github
 
+print("folder creat remote")
+
 foldername = str(sys.argv[1])
-path = os.environ.get('mp')         # add projects dirctory to the env vars
-token = os.environ.get('gt')        # add github token to the env vars
+path = "C:\\Users\\Vlad\\Desktop\\gitprojects"   #os.environ.get('C:\Users\Vlad\Desktop\gitprojects')         # add projects dirctory to the env vars
+token ="d02e35e3bdeab22f3e56e3e5bdce42cf987e4300"       #os.environ.get('gt')        # add github token to the env vars
 _dir = path + '/' + foldername
 
 g = Github(token)
@@ -19,15 +21,15 @@ commands = [f'echo "# {repo.name}" >> README.md',
             'git commit -m "Initial commit"',
             'git push -u origin master']
 
-if sys.argv[2] == "g":
-    os.mkdir(_dir)
-    os.chdir(_dir)
 
-    for c in commands:
-        os.system(c)
+os.mkdir(_dir)
+os.chdir(_dir)
 
-    print(f'{foldername} created locally')
-    os.system('code .')
+for c in commands:
+  os.system(c)
 
-else:
-    print("create <fldername>")
+
+print(f'{foldername} created locally')
+
+
+
