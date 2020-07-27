@@ -3,9 +3,18 @@ import os
 
 print("Folder creat local")
 foldername = str(sys.argv[1])
-path ='C:\\Users\\Vlad\\Desktop\\gitprojects'  #os.environ.get('C:\Users\Vlad\Desktop\gitprojects')
-_dir = path + '/' + foldername
+mode=""
+if foldername.__contains__("_"):
+    mode=foldername[-2:]
+    foldername=foldername[0:-3]
 
+subfolder=""
+if mode == 'py':
+    subfolder='Python'
+if mode == 'ja':
+    subfolder='Java'
+path ='C:\\Users\\Vlad\\Desktop\\gitprojects'  #os.environ.get('C:\Users\Vlad\Desktop\gitprojects')
+_dir = path  +'\\'+subfolder+'\\' + foldername
 try:
     os.mkdir(_dir)
     os.chdir(_dir)
@@ -13,9 +22,13 @@ try:
     os.system(f'echo "# {foldername}" > README.md')
     os.system('git add README.md')
     os.system('git commit -m "first commit"')
+    if mode=='py' :
+     os.system(f'pycharm.bat {_dir} ')
+    if mode=='ja' :
+     os.system(f'idea.bat ')
 
     print(f'{foldername} created locally')
-    os.system('code .')
+    
 
 
 except:
